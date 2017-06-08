@@ -1,0 +1,20 @@
+{
+	"name": "yurunsoft/yurun-event",
+	"type": "project",
+    "autoload": {
+        "psr-4": {
+            "Yurun\\Until\\": "Src/"
+        }
+    },
+    "require": {
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
