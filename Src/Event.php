@@ -58,7 +58,6 @@ class Event
 	
 	/**
 	 * 触发事件(监听事件)
-	 * 不是引用传参方式，如有需要请使用triggerReference方法
 	 * @param name $event        	
 	 * @param boolean $once        	
 	 * @return mixed
