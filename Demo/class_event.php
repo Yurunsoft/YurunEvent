@@ -4,7 +4,7 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Yurun\Until\ClassEvent;
+use Yurun\Util\ClassEvent;
 
 // 先定义个类
 class Test

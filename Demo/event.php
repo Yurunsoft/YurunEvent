@@ -4,7 +4,7 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Yurun\Until\Event;
+use Yurun\Util\Event;
 
 // 监听事件，事件名称叫test
 Event::on('test', function($message, $arr){
