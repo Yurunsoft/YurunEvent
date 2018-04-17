@@ -6,7 +6,7 @@ PHP事件类，支持全局事件和在类中定义和使用事件。
 
 ```json
 "require": {
-    "yurunsoft/yurun-event" : "dev-master"
+    "yurunsoft/yurun-event" : "~2.0"
 }
 ```
 
