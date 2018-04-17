@@ -4,82 +4,48 @@ namespace Yurun\Until;
 class Event
 {
 	/**
-	 * 事件绑定记录
-	 */
-	private static $events = array();
-	
-	/**
-	 * 注册事件
-	 * @param string $event
-	 * @param mixed $callback
+	 * 注册事件(监听)
+	 * @param string $event 事件名称
+	 * @param mixed $callback 回调
 	 * @param bool $first 是否优先执行，以靠后设置的为准
+	 * @param bool $once 是否只执行一次
 	 */
 	public static function register($event, $callback, $first = false, $once = false)
 	{
-		if (!isset(self::$events[$event]))
-		{
-			self::$events[$event] = array();
-		}
-		$item = array(
-			'callback'	=>	$callback,
-			'once'		=>	$once,
-		);
-		if($first)
-		{
-			array_unshift(self::$events[$event], $item);
-		}
-		else 
-		{
-			self::$events[$event][] = $item;
-		}
+		return call_user_func_array([EventClass::getInstance(), 'register'], func_get_args());
 	}
 
 	/**
-	 * 注册事件，register的别名
-	 * @param string $event
-	 * @param mixed $callback
+	 * 注册事件(监听)，register的别名
+	 * @param string $event 事件名称
+	 * @param mixed $callback 回调
 	 * @param bool $first 是否优先执行，以靠后设置的为准
 	 */
 	public static function on($event, $callback, $first = false)
 	{
-		self::register($event, $callback, $first);
+		return call_user_func_array([EventClass::getInstance(), 'on'], func_get_args());
 	}
 
 	/**
-	 * 注册一次性事件
-	 * @param string $event
-	 * @param mixed $callback
-	 * @param boolean $first
+	 * 注册一次性事件(监听)
+	 * @param string $event 事件名称
+	 * @param mixed $callback 回调
+	 * @param boolean $first 是否优先执行，以靠后设置的为准
 	 */
 	public static function once($event, $callback, $first = false)
 	{
-		self::register($event, $callback, $first, true);
+		return call_user_func_array([EventClass::getInstance(), 'once'], func_get_args());
 	}
 	
 	/**
-	 * 触发事件(监听事件)
-	 * @param name $event        	
-	 * @param boolean $once        	
+	 * 触发事件
+	 * @param name $event 事件名称
+	 * @param array $params 参数
 	 * @return mixed
 	 */
 	public static function trigger($event, $params = array())
 	{
-		if (isset(self::$events[$event]))
-		{
-			foreach (self::$events[$event] as $key => $item)
-			{
-				if(true === $item['once'])
-				{
-					unset(self::$events[$event][$key]);
-				}
-				if(true === call_user_func($item['callback'], $params))
-				{
-					// 事件返回true时不继续执行其余事件
-					return true;
-				}
-			}
-			return false;
-		}
-		return true;
+		return call_user_func_array([EventClass::getInstance(), 'trigger'], func_get_args());
 	}
+
 }

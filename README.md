@@ -1,5 +1,6 @@
 # YurunEvent
-PHP事件类，支持全局事件和类中事件。
+
+PHP事件类，支持全局事件和在类中定义和使用事件。
 
 # Composer
 
@@ -8,6 +9,7 @@ PHP事件类，支持全局事件和类中事件。
     "yurunsoft/yurun-event" : "dev-master"
 }
 ```
+
 # 代码实例
 
 ## 全局事件
